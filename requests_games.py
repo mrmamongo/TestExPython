@@ -6,8 +6,9 @@ from fake_useragent import UserAgent
 from constants import buffer_filename, url
 
 ua = UserAgent()
-games = requests.get(url, headers={'user-agent': ua.google}).json()['events']
-live_games = [game for game in games if game['place'] == 'live']
+resp = requests.get(url, headers={'user-agent': ua.google}).json()
+sports = list(filter(lambda x: x['name'].find('Футбол') != -1, resp['sports']))
+live_games = [game for game in resp['events'] if game['place'] == 'live' and next((x for x in sports if game['sportId'] == x['id']), None) is not None]
 out_games = {}
 output_fieldnames = ['id', 'gamers']
 output = []
