@@ -25,7 +25,7 @@ for game in live_games:
 
 
 print(out_games)
-with open(buffer_filename, 'w') as csv_file:
+with open(buffer_filename, 'w', encoding='UTF-8') as csv_file:
     writer = csv.DictWriter(csv_file, fieldnames=output_fieldnames)
     writer.writeheader()
     writer.writerows(output)
