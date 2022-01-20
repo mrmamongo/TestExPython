@@ -40,6 +40,8 @@ if load_page(driver):
     find.click()
     find = WebDriverWait(driver, constants.delay).until(EC.presence_of_element_located((By.XPATH, constants.game_name_xpath)))
     print(find.text)
+else:
+    print("Couldn't load page")
 
 driver.close()
 driver.quit()
