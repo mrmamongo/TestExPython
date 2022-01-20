@@ -24,7 +24,7 @@ def load_page(drv: webdriver.Chrome) -> bool:
 
 
 values = []
-with open(constants.buffer_filename, 'r') as csv_file:
+with open(constants.buffer_filename, 'r', encoding='UTF-8') as csv_file:
     reader = csv.DictReader(csv_file)
     for row in reader:
         values.append({row['id']: row['gamers']})
