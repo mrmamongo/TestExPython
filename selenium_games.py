@@ -37,6 +37,8 @@ if load_page(driver):
     find.send_keys(game_to_inspect)
     find.send_keys(Keys.RETURN)
     find = WebDriverWait(driver, constants.delay).until(EC.presence_of_element_located((By.XPATH, constants.found_value_xpath)))
+    find.click()
+    find = WebDriverWait(driver, constants.delay).until(EC.presence_of_element_located((By.XPATH, constants.game_name_xpath)))
     print(find.text)
 
 driver.close()
